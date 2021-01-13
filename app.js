@@ -17,10 +17,30 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", function(req, res) {
-  res.render("home");
+  res.render("home", {
+    homePara: homeStartingContent
+  });
 });
 
+app.get("/about", function(req, res) {
+  res.render("about", {
+    aboutPara:aboutContent
+  })
+})
 
+app.get("/contact", function(req, res) {
+  res.render("contact", {
+    contactPara: contactContent
+  })
+})
+
+app.get("/compose", function(req, res) {
+  res.render("compose")
+})
+
+app.post("/compose", function(req, res) {
+  console.log(req.body.input);
+})
 
 app.listen(3000, function(req, res) {
   console.log("Server running on port 3000 . . .");
