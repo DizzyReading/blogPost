@@ -16,15 +16,19 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
+const posts = [];
+
 app.get("/", function(req, res) {
   res.render("home", {
-    homePara: homeStartingContent
+    homePara: homeStartingContent,
+    thePost: posts
   });
+
 });
 
 app.get("/about", function(req, res) {
   res.render("about", {
-    aboutPara:aboutContent
+    aboutPara: aboutContent
   })
 })
 
@@ -39,8 +43,15 @@ app.get("/compose", function(req, res) {
 })
 
 app.post("/compose", function(req, res) {
-  console.log(req.body.input);
-})
+
+  const post = {
+    title: req.body.postTitle,
+    content: req.body.postBody
+  }
+  posts.push(post);
+  res.redirect("/");
+
+});
 
 app.listen(3000, function(req, res) {
   console.log("Server running on port 3000 . . .");
