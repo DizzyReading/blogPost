@@ -21,7 +21,8 @@ const posts = [];
 app.get("/", function(req, res) {
   res.render("home", {
     homePara: homeStartingContent,
-    thePost: posts
+    thePosts: posts,
+
   });
 
 });
@@ -53,6 +54,22 @@ app.post("/compose", function(req, res) {
 
 });
 
+app.get("/posts/:topic", function(req, res) {
+
+const requestedTitle = req.params.topic
+
+posts.forEach(function(post) {
+  const storedTitle = post.title
+
+  if(requestedTitle === storedTitle){
+    console.log("Matching!");
+  }
+})
+
+
+});
+
+
 app.listen(3000, function(req, res) {
   console.log("Server running on port 3000 . . .");
-})
+});

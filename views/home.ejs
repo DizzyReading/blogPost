@@ -4,11 +4,15 @@
 
 <p><%= homePara %></p>
 
-<% for(var i= 0; i < thePost.length; i++) {%>
-<%= console.log(thePost[i].title) %>
 
+<% thePosts.forEach(function(thePost) {%>
 
-<% } %>
+<h1><%= thePost.title %></h1>
+<p><%= thePost.content %></p>
+
+  <%= console.log(thePost.title);%>
+
+<% });%>
 
 
 <%- include("partials/footer") -%>
