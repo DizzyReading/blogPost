@@ -8,11 +8,10 @@
 <% thePosts.forEach(function(thePost) {%>
 
 <h1><%= thePost.title %></h1>
-<p><%= thePost.content %></p>
+<p><%= thePost.content.substring(0, 100) + "" + " . . . "%><a href="/posts/<%= thePost.title %>">Read More</a></p>
 
-  <%= console.log(thePost.title);%>
+<%= console.log(thePost.title);%>
 
 <% });%>
-
 
 <%- include("partials/footer") -%>

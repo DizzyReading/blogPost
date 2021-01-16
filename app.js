@@ -57,20 +57,19 @@ app.post("/compose", function(req, res) {
 
 app.get("/posts/:topic", function(req, res) {
 
-const requestedTitle = _.lowerCase(req.params.topic);
+  const requestedTitle = _.lowerCase(req.params.topic);
 
-posts.forEach(function(post) {
-  const storedTitle = _.lowerCase(post.title);
+  posts.forEach(function(post) {
+    const storedTitle = _.lowerCase(post.title);
 
-  if(requestedTitle === storedTitle){
-    res.render("post", {
-      newestPostTitle: post.title,
-      newestPostContent: post.content
-    });
-    console.log("Matching!");
-  }
-});
-
+    if (requestedTitle === storedTitle) {
+      res.render("post", {
+        newestPostTitle: post.title,
+        newestPostContent: post.content
+      });
+      console.log("Matching!");
+    }
+  });
 
 });
 
